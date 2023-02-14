@@ -1,0 +1,16 @@
+[
+    {
+        "Quest Title": "The Tale Of A Sev3 Disguised as a Sev2.",
+        "Link To ICM": "ICM LINK",
+        "Description": "Quest Description",
+        "Questions": [
+            {
+                "Question:":"How many resources were affected?",
+                "Answer": "12",
+                "Hint1": "Hint1 about how to get this information.",
+                "Hint2": "Hint2 about how to get this information.",
+                "Hint3": "Hint3 about how to get this information."
+            }
+        ]
+    }
+]
