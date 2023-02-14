@@ -6,3 +6,7 @@ FHL Project
 
 1. `npm install`
 2. `node server.js`
+
+# Endpoints Available
+
+- `/quests` - Get the list of available quests
