@@ -13,4 +13,11 @@ app.get("/quests", async (req, res) => {
   res.json(quests);
 });
 
+// Uploading a new quest
+app.post("/quest", async (req, res) => {
+  // TODO: make sure the body is valid
+  await repo.addQuest(req.body);
+  res.send({ message: "Uploaded Successfully." });
+});
+
 module.exports = app;

@@ -9,4 +9,5 @@ FHL Project
 
 # Endpoints Available
 
-- `/quests` - Get the list of available quests
+- `/quests` - (GET) get the list of available quests
+- `/quest` - (POST) uploading a new quest
