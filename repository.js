@@ -20,8 +20,19 @@ class Repository {
     const jsonRecords = await fs.promises.readFile(this.filename, {
       encoding: "utf8",
     });
-    const objRecord = JSON.parse(jsonRecords);
-    return objRecord;
+    const quests = JSON.parse(jsonRecords);
+    return quests;
+  }
+
+  async addQuest(quest) {
+    const jsonRecords = await fs.promises.readFile(this.filename, {
+      encoding: "utf8",
+    });
+    const quests = JSON.parse(jsonRecords);
+    quests.push(quest);
+
+    const updatedRecords = JSON.stringify(quests, null, 4);
+    await fs.promises.writeFile(this.filename, updatedRecords, "utf-8");
   }
 }
 
