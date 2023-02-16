@@ -12,5 +12,92 @@
                 "Hint3": "Hint3 about how to get this information."
             }
         ]
+    },
+    {
+        "Quest Title": "Root Cause for request errors",
+        "ICMLink": "https://portal.microsofticm.com/imp/v3/incidents/details/366336692/home",
+        "Description": "A sev 3 alert is fired for a 4xx or 5xx error in one of our endpoints.  Get to the root cause of the error and determine whether action must be taken, and how to keep other customers from experiencing the same issue in the future.",
+        "Questions": [
+            {
+                "Question:":"How many instances of this error have occurred within 20 minutes of the alert?",
+                "Answer": "8",
+                "Hints": [
+                    "This information can be found in the logs",
+                    "Open the relevant logs using a link from the ICM",
+                    "You might not see the relevent logs if too many results are returned",
+                    "Use the Filtering Conditions to scope down the search so you can see all the relevent results",
+                    "Make sure you refresh, sometimes not all the logs will be shown and a refresh should fix this",
+                    "Two logs should be present for each failed request"
+                ]
+            },
+            {
+                "Question:":"What is the correlation Id for one of the affected requests?",
+                "Answer": [
+                    "e9995d417f66484783bf895f8c045f66",
+                    "ff11cf2250034a76a4d6122a21d2f0b9",
+                    "cc259609a0094ae5ae6d4976277e4c36",
+                    "1b820e370c0e414cb37c29f7a0094f0c",
+                    "62ac23ba85f94b44b6ef9ba678c6ec45",
+                    "3c9aed928b604bb59cc4f5c5f3450f7a",
+                    "9953bb11181f4bef9f21ee3a3f51f5d9",
+                    "85fa87bd8b364723828ae7dc15cdb9b1"
+                ],
+                "Hints": [
+                    "This can be found in the logs, or one of the correlation Ids can be found in the ICM itself",
+                    "Look for a Troubleshooting information (update) message in the discussion section",
+                    "Use the same log search as before"
+                ]
+            },
+            {
+                "Question:":"What is the correlationVector for the affected request?",
+                "Answer": [
+                    "m7TcM/K6QESTUAP/jbvF+w",
+                    "Nu/I3T46IUG8yOGa65KS7A",
+                    "noy8vmqf9EaEDKyM2nIS0w",
+                    "sTZd9h0v1EqYY289qH5dbw",
+                    "ToKjJdZ1C0G+DBCh0pawEg",
+                    "EJbMMJJW0EyB8rhqRFIUiQ",
+                    "lkGUj5oi+0Ct4AZRTRirQQ",
+                    "KXQxfJZAAEmrRn6h0OHLpg"
+                ],
+                "Hints": [
+                    "This information can be found in the logs",
+                    "Use the same log search as before"
+                ]
+            },
+            {
+                "Question:":"What was the underlying error message for the failed request?",
+                "Answer": "The Resource Provider returned '499' status code.",
+                "Hints": [
+                    "Search the logs for a specific correlation Id/vector",
+                    "Make sure you remove the client query as that will scope your results down too far",
+                    "The underlying error message is often encrypted. See https://skype.visualstudio.com/SPOOL/_wiki/wikis/SPOOL.wiki/20933/Decrypting-SMS-Logs",
+                ]
+            },
+            {
+                "Question:":"Is this an ongoing issue, or was it transient?",
+                "Answer": "Transient",
+                "Hints": [
+                    "Was the issue auto-mitigated?",
+                    "What is the volume of errors and have we seen similar errors over time?"
+                ]
+            },
+            {
+                "Question:":"How many customers were affected by this incident?",
+                "Answer": "1",
+                "Hints": [
+                    "Refer to this TSG: https://skype.visualstudio.com/SPOOL/_wiki/wikis/SPOOL.wiki/19428/TSG-Gathering-Impacted-Resource-Information-From-Logs",
+                    "Since it's an issue with Resource Provider we don't have access to the resource Id, but is there anything else that could identify the caller?"
+                ]
+            },
+            {
+                "Question:":"Has this issue occurred in the recent past? Is there an ICM already describing this issue?",
+                "Answer": "This is why we should be keeping our ICM queue cleaner.  Refer to this wiki for instructions on parenting an ICM and/or creating repair items: https://skype.visualstudio.com/SPOOL/_wiki/wikis/SPOOL.wiki/12707/SMS-On-Call-Onboarding?anchor=during-secondary-on-call",
+                "Hints": [
+                    "Look in the ICM queue for any similar issues",
+                    "Keep in mind issues with downstream dependencies like Resource Provider can occur across endpoints, so don't just look for ICMs with the exact same title as the current alert.",
+                ]
+            }
+       ]
     }
 ]
