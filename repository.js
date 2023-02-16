@@ -34,6 +34,16 @@ class Repository {
     const updatedRecords = JSON.stringify(quests, null, 4);
     await fs.promises.writeFile(this.filename, updatedRecords, "utf-8");
   }
+
+  async getQuest(questTitle) {
+    const jsonRecords = await fs.promises.readFile(this.filename, {
+      encoding: "utf8",
+    });
+
+    const quests = JSON.parse(jsonRecords);
+    const quest = quests.find((quest) => quest["Quest Title"] === questTitle);
+    return quest;
+  }
 }
 
 module.exports = new Repository("database.json");

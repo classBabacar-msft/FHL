@@ -11,3 +11,4 @@ FHL Project
 
 - `/quests` - (GET) get the list of available quests
 - `/quest` - (POST) uploading a new quest
+- `/quest:questTitle` - (GET) get quest information by providing quest title
